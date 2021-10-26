@@ -8,7 +8,7 @@ Clone this repository and then run the script.
 
 ```sh
 npm install
-npm run dev
+npm run upload
 ```
 
 On success you should see something lke this in your terminal.
