@@ -3,7 +3,7 @@ const fs = require("fs");
 const FormData = require("form-data");
 const fetch = require("node-fetch");
 
-const key = `YOUR API KEY`;
+const key = `YOUR_API_KEY`;
 
 var form = new FormData();
 const path = `${__dirname}/nature-6.mp4`;
@@ -12,7 +12,7 @@ form.append("data", fs.createReadStream(path));
 const headers = form.getHeaders();
 console.log(headers);
 
-fetch("https://shuttle-5.estuary.tech/content/add", {
+fetch("https://upload.estuary.tech/content/add", {
   method: "POST",
   body: form,
   headers: {
