@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "upload": "node ."
+    "upload": "node .",
+    "collection-setup": "node collections.js"
   },
   "repository": {
     "type": "git",
