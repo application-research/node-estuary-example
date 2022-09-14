@@ -4,20 +4,19 @@ const FormData = require("form-data");
 const fetch = require("node-fetch");
 
 const key = `YOUR_API_KEY`;
-const fileCID = `YOUR_FILE_CID`;
+const fileCID = `YOUR_FILE_CID`; // test CID: bafybeicgpnok4bl2rkf4ceojlb376henq6f6ufwqqvyyzmuo4xloxypuwm
 
 async function run() {
-
   // Creating the collection
   const createCol = await fetch("https://api.estuary.tech/collections/create", {
     method: "POST",
     body: JSON.stringify({
-      "description": "test-collection",
-      "name": "cats"
+      description: "a collection made for testing",
+      name: "test-collection",
     }),
     headers: {
-      Authorization: `Bearer ${key}`
-    }
+      Authorization: `Bearer ${key}`,
+    },
   });
   const createColRes = await createCol.json();
 
@@ -35,16 +34,19 @@ async function run() {
   */
 
   // Adding a file to the collection
-  const colAdd = await fetch("https://api.estuary.tech/collections/add-content", {
-    method: "POST",
-    body: JSON.stringify({
-      "cids": [fileCID],
-      "coluuid": createColRes.uuid,
-    }),
-    headers: {
-      Authorization: `Bearer ${key}`
+  const colAdd = await fetch(
+    "https://api.estuary.tech/collections/add-content",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        cids: [fileCID],
+        coluuid: createColRes.uuid,
+      }),
+      headers: {
+        Authorization: `Bearer ${key}`,
+      },
     }
-  });
+  );
   const colAddRes = await colAdd.json();
 
   console.log(colAddRes);
@@ -57,14 +59,14 @@ async function run() {
   const colAddPath = await fetch("https://api.estuary.tech/content/add-ipfs", {
     method: "POST",
     body: JSON.stringify({
-      "filename": "nature-6.mp4",
-      "root": fileCID,
-      "coluuid": createColRes.uuid,
-      "dir": "/test-dir/nature-6.mp4", 
+      filename: "nature-6.mp4",
+      root: fileCID,
+      coluuid: createColRes.uuid,
+      dir: "/test-dir/nature-6.mp4",
     }),
     headers: {
-      Authorization: `Bearer ${key}`
-    }
+      Authorization: `Bearer ${key}`,
+    },
   });
   const colAddPathRes = await colAddPath.json();
 
@@ -87,7 +89,6 @@ async function run() {
       }
     }
   */
-
 }
 
 run();

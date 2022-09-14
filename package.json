@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "upload": "node .",
-    "collection-setup": "node collections.js"
+    "collection-setup": "node collections.js",
+    "upload-cid": "node upload-cid.js",
+    "upload-car": "node upload-car.js"
   },
   "repository": {
     "type": "git",
